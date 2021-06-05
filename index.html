@@ -27,12 +27,33 @@
         </div>
     </form>
 
-    <div class="text-right text-giant">
+    <div class="text-right text-giant total">
         $30
     </div>
 
 
 </div>
+
+<script>
+    
+    const priceInput = document.querySelector('[name=price]'); 
+    const quantityInput = document.querySelector('[name=quantity]'); 
+    const totalDiv = document.querySelector('.total'); 
+
+    calcPriceCost = () =>{
+        const price = priceInput.value;
+        const quantity = quantityInput.value;
+        const cost = price * quantity;
+
+        totalDiv.innerText = '$' + cost;
+    }
+
+    priceInput.addEventListener('keyup', calcPriceCost);
+
+
+
+
+</script>
     
 </body>
 </html>
