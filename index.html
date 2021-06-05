@@ -17,18 +17,18 @@
     <form>
         <div class="form-group">
             <label for ="price">Price</label>
-            <input type="text" class="form-control" name="price" value="30">
+            <input type="text" class="form-control" name="price" >
         </div>
 
 
         <div class="form-group">
             <label for="quantity">Quantity</label>
-            <input type="number" class="form-control" name="quantity" value="1">
+            <input type="range" class="form-control" name="quantity" value="1" min="1" max="10" step="1">
         </div>
     </form>
 
     <div class="text-right text-giant total">
-        $30
+      
     </div>
 
 
@@ -45,11 +45,13 @@
         const quantity = quantityInput.value;
         const cost = price * quantity;
 
-        totalDiv.innerText = '$' + cost;
+        totalDiv.innerText = '$' + cost.toFixed(2);
     }
-
-    priceInput.addEventListener('keyup', calcPriceCost);
-
+    
+    calcPriceCost();
+    priceInput.addEventListener('input', calcPriceCost);
+    quantityInput.addEventListener('input', calcPriceCost);
+    
 
 
 
