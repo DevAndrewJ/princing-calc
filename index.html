@@ -3,10 +3,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <style>
+        body, .jumbotron { padding: 30px;}
+        .text-giant {font-size: 50px;}
+        
+    </style>
     <title>Princing Calculator</title>
 </head>
 <body>
+<div class="jumbotron">
+    <h2>How much do pies cost?</h2>
 
-    <h1>Pricing Calculator</h1>
+    <form>
+        <div class="form-group">
+            <label for ="price">Price</label>
+            <input type="text" class="form-control" name="price" >
+        </div>
+
+
+        <div class="form-group">
+            <label for="quantity">
+                Quantity 
+            <span class="badge-primary quantity-label"> 1 </span>
+            </label>
+            <input type="range" class="form-control" name="quantity" value="1" min="1" max="10" step="1">
+        </div>
+    </form>
+
+    <div class="text-right text-giant total">
+    </div>
+
+
+</div>
+
+<script>
+    
+    const priceInput = document.querySelector('[name=price]'); 
+    const quantityInput = document.querySelector('[name=quantity]'); 
+    const totalDiv = document.querySelector('.total'); 
+    const quantityLabel = document.querySelector('.quantity-label'); 
+
+    calcPriceCost = () =>{
+        const price = priceInput.value;
+        const quantity = quantityInput.value;
+        const cost = price * quantity;
+
+        totalDiv.innerText = '$' + cost.toFixed(2);
+    }
+
+    quantityUpdate = () =>{
+        const quantity = quantityInput.value;
+        quantityLabel.innerText = quantity;
+    }
+    
+    calcPriceCost();
+
+    priceInput.addEventListener('input', calcPriceCost);
+    quantityInput.addEventListener('input', calcPriceCost);
+    quantityInput.addEventListener('input', quantityUpdate);
+    
+
+
+
+</script>
+    
 </body>
 </html>
